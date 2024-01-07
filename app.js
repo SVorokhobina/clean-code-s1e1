@@ -10,7 +10,7 @@
 
 var taskInput=document.getElementById("new-task");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
+var todoTaskHolder=document.getElementById("todo-tasks");//ul of #todo-tasks
 var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
 
 
@@ -65,8 +65,8 @@ var addTask=function(){
   if (!taskInput.value) return;
   var listItem=createNewTaskElement(taskInput.value);
 
-  //Append listItem to incompleteTaskHolder
-  incompleteTaskHolder.appendChild(listItem);
+  //Append listItem to todoTaskHolder
+  todoTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);
 
   taskInput.value="";
@@ -85,7 +85,7 @@ var editTask=function(){
   var editInput=listItem.querySelector("input[type=text]");
   var label=listItem.querySelector("label");
   var editBtn=listItem.querySelector(".edit");
-  var containsClass=listItem.classList.contains("editMode");
+  var containsClass=listItem.classList.contains("edit-mode");
   //If class of the parent is .editmode
   if(containsClass){
 
@@ -99,7 +99,7 @@ var editTask=function(){
   }
 
   //toggle .editmode on the parent.
-  listItem.classList.toggle("editMode");
+  listItem.classList.toggle("edit-mode");
 };
 
 
@@ -129,11 +129,11 @@ var taskCompleted=function(){
 
 var taskIncomplete=function(){
   console.log("Incomplete Task...");
-  //Mark task as incomplete.
+  //Mark task as incomplete (todo).
   //When the checkbox is unchecked
-  //Append the task list item to the #incompleteTasks.
+  //Append the task list item to the #todo-tasks.
   var listItem=this.parentNode;
-  incompleteTaskHolder.appendChild(listItem);
+  todoTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem,taskCompleted);
 }
 
@@ -168,12 +168,12 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
   checkBox.onchange=checkBoxEventHandler;
 }
 
-//cycle over incompleteTaskHolder ul list items
+//cycle over todoTaskHolder ul list items
 //for each list item
-for (var i=0; i<incompleteTaskHolder.children.length;i++){
+for (var i=0; i<todoTaskHolder.children.length;i++){
 
   //bind events to list items chldren(tasksCompleted)
-  bindTaskEvents(incompleteTaskHolder.children[i],taskCompleted);
+  bindTaskEvents(todoTaskHolder.children[i],taskCompleted);
 }
 
 
