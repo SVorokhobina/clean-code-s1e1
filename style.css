@@ -1,5 +1,5 @@
 /* Basic Style */
-body {
+.body {
   background-color: #f8f8f8;
   color: #333;
   font-family: Lato, sans-serif;
@@ -12,11 +12,11 @@ body {
   text-align: right;
 }
 
-.header img {
+.header__diagram {
   width: 100%;
 }
 
-.info-link {
+.header__info-link {
   font-family: fantasy, cursive;
 }
 
@@ -38,42 +38,7 @@ body {
   flex-grow: 1;
 }
 
-.task-row-wrapper {
-  display: flex;
-  padding-top: 20px;
-}
-
-ul {
-  margin: 0;
-  padding: 0px;
-}
-
-li, 
-h2 {
-  list-style: none;
-}
-
-input,
-button{
-  outline: none;
-}
-
-button {
-  background: none;
-  border: 0px;
-  color: #888;
-  font-size: 15px;
-  width: 60px;
-  font-family: Lato, sans-serif;
-  cursor: pointer;
-}
-
-button:hover {
-  color: #3a3a3a;
-}
-
-/* Heading */
-h2 {
+.section-heading {
   color: #333;
   font-weight: 700;
   font-size: 15px;
@@ -83,6 +48,53 @@ h2 {
   text-transform: uppercase;
 }
 
+.add-task__input-wrapper {
+  display: flex;
+  padding-top: 20px;
+}
+
+#add-task__input {
+  width: 318px;
+  outline: none;
+}
+
+.button {
+  outline: none;
+  background: none;
+  border: 0px;
+  color: #888;
+  font-size: 15px;
+  width: 60px;
+  font-family: Lato, sans-serif;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #3a3a3a;
+}
+
+.todo__task-list,
+.completed__task-list {
+  margin: 0;
+  padding: 0px;
+}
+
+.todo__task-line,
+li {
+  list-style: none;
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input {
+  outline: none;
+}
+
+#add-task__input,
 input[type="text"] {
   margin: 0;
   font-size: 18px;
@@ -96,30 +108,12 @@ input[type="text"] {
   color: #888;
 }
 
+#add-task__input:focus,
 input[type="text"]:focus {
   color: #333;
 }
 
-/* New Task */
-input#new-task {
-  width: 318px;
-}
-
-/* Task list */
-li {
-  overflow: hidden;
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-li > * {
-  vertical-align: middle;
-}
-
-li > input[type="checkbox"] {
+.checkbox {
   margin: 0 10px;
 }
 
@@ -144,8 +138,7 @@ button.delete img:hover {
   transform: rotateZ(0);
 }
 
-/* Completed */
-ul#completed-tasks label {
+.completed__task-list label {
   text-decoration: line-through;
   color: #888;
 }
